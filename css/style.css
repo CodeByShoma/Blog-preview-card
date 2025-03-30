@@ -1,4 +1,167 @@
 .attribution { font-size: 11px; text-align: center; }
 .attribution a { color: hsl(228, 45%, 44%); }
 
+/*=================================
+          ブログカード全体
+==================================*/
+
+/*=================================
+          カスタムプロパティ
+==================================*/
+:root{
+  /* Color */
+  --color-yellow: #f4d04e;
+  --color-white: #ffffff;
+  --color-gray950: #111111;
+  --color-gray500: #6b6b6b;
+
+  /* Font Size */
+  --fs-heading: 24px;
+  --fs-body: 16px;
+  --fs-small: 14px;
+
+  /* Font Weight */
+  --fw-bold: 700;
+  --fw-medium: 500;
+
+  /* Radius */
+  --radius-l: 20px;
+  --radius-m: 10px;
+  --radius-s: 4px;
+
+}
+
+/*=================================
+        リセット・ベース設定
+==================================*/
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  font-family: 'Figtree', sans-serif;
+  line-height: 1.5;
+  color: var(--color-gray950);
+}
+
+img{
+  width: 100%;
+}
+
+/*=================================
+        メイン全体のグリッド
+==================================*/
+.main{
+  display: grid;
+  grid-template-columns: 1fr minmax(auto, 384px) 1fr;
+
+  > *{
+    grid-column: 1/-1;
+  }
+}
+
+/* --- 全幅背景・レイアウト制御 --- */
+.blog-card.wrapper{
+  display: grid;
+  grid-template-columns: subgrid;
+  background-color: var(--color-yellow);
+  height: 100vh;
+  align-content: center;
+
+  >*{
+    grid-column: 2/-2;
+  }
+}
+
+/* --- blog-card・見た目のスタイル --- */
+.blog-card{}
+
+/* --- inner・コンテンツ幅 --- */
+.inner{
+  display: grid;
+  grid-template: 
+  "... ...... ...... ...... ..." 24px
+  "... img    img    img    ..." auto
+  "... ...... ...... ...... ..." 24px
+  "... tag    tag    tag    ..." auto
+  "... ...... ...... ...... ..." 12px
+  "... date   date   date   ..." auto
+  "... ...... ...... ...... ..." 12px
+  "... title  title  title  ..." auto
+  "... ...... ...... ...... ..." 12px
+  "... text   text   text   ..." auto
+  "... ...... ...... ...... ..." 24px
+  "... avatar ...... name   ..." auto
+  "... ...... ...... ...... ..." 24px
+  /24px auto 12px 1fr 24px;
+  background-color: var(--color-white);
+  border-radius: var(--radius-l);
+  border: 1px solid var(--color-gray950);
+  box-shadow: 8px 8px 0px 0px var(--color-gray950);
+}
+
+/* Thumbnail */
+.thumbnail{
+  grid-area: img;
+  border-radius: var(--radius-m);
+}
+
+/* tag */
+.tag{
+  grid-area: tag;
+  font-size: var(--fs-small);
+  font-weight: var(--fw-bold);
+  background-color: var(--color-yellow);
+  padding: 4px 12px;
+  justify-self: start;
+  border-radius: var(--radius-s);
+}
+
+/* date */
+.date{
+  grid-area: date;
+  font-size: var(--fs-small);
+}
+
+/* title */
+.title{
+  grid-area: title;
+  font-size: var(--fs-heading);
+  font-weight: var(--fw-bold);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.title:hover{
+  color: var(--color-yellow);
+}
+
+/* text */
+.text{
+  grid-area: text;
+  color: var(--color-gray500);
+  font-size: var(--fs-body);
+}
+
+/* avatar */
+.avatar{
+  grid-area: avatar;
+  width: 32px;
+  height: auto;
+}
+
+/* name */
+.name{
+  grid-area: name;
+  align-self: center;
+  font-size: var(--fs-small);
+  font-weight: var(--fw-bold);
+}
+
+
+
+
+
 
